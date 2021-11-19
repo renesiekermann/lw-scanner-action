@@ -1,8 +1,8 @@
-name: test-action
+name: test-action-failure-policy
 on: [push, workflow_dispatch]
 
 jobs:
-  test-action:
+  test-action-failure-policy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -14,11 +14,16 @@ jobs:
       - name: lw-scanner
         id: lw-scanner
         uses: ./
+        continue-on-error: true
         with:
           LW_ACCOUNT_NAME: ${{ secrets.LW_ACCOUNT_NAME }}
-          LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN }}
+          LW_ACCESS_TOKEN: ${{ secrets.LW_ACCESS_TOKEN_POLICY }}
           IMAGE_NAME: ghcr.io/timarenz/vulnerable-container
           IMAGE_TAG: v0.0.1
           SAVE_BUILD_REPORT: true
           BUILD_REPORT_FILE_NAME: report.html
-          FAIL_BUILD: false
+          USE_POLICY: true
+
+      - name: Check if vulnerabilites were found and step failed.
+        if: steps.lw-scanner.outcome == 'failure'
+        run: echo "Vulnerabilities found and step failed succesfully." && exit 0
