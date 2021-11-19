@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 export LW_ACCOUNT_NAME=${INPUT_LW_ACCOUNT_NAME}
 export LW_ACCESS_TOKEN=${INPUT_LW_ACCESS_TOKEN}
