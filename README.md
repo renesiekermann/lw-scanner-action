@@ -1,5 +1,7 @@
 # lw-scanner-action - Lacework Inline Scanner GitHub Action
 
+[![Git](https://app.soluble.cloud/api/v1/public/badges/8e5f1dae-d0a9-4811-8328-cbcd6a0c7101.svg?orgId=120848723819)](https://app.soluble.cloud/repos/details/github.com/renesiekermann/lw-scanner-action?orgId=120848723819)  
+
 This is an example on how the Lacework scanner can be used as GitHub action. This is provided as a technical demostration without any guarantees. Also, this is not an official Lacework project.
 
 ## What's new
